@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.panfx.ScenesController">
+   <children>
+      <MenuBar prefHeight="20.0" prefWidth="720.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Separator layoutX="127.0" layoutY="19.0" orientation="VERTICAL" prefHeight="405.0" prefWidth="5.0" />
+      <Label layoutX="133.0" layoutY="21.0" prefHeight="17.0" prefWidth="589.0" text="Menu Principal" />
+      <Button layoutY="26.0" mnemonicParsing="false" onAction="#switchToInventoryMain" text="Inventario" />
+      <Button layoutX="70.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToSellMain" text="Vender" />
+      <Separator layoutY="118.0" prefHeight="4.0" prefWidth="131.0">
+         <tooltip>
+            <Tooltip text="Empty Tooltip" />
+         </tooltip>
+      </Separator>
+   </children>
+</AnchorPane>
