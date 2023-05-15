@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,7 +30,6 @@ public class InventoryMenuControllers implements Initializable{
     private Scene scene;
     private Parent root;
     private InventarioPan inventarioPan;
-    private Pan currentPan;
     @FXML
     private ListView<Pan> inventoryBreads;
     @FXML
@@ -41,6 +41,7 @@ public class InventoryMenuControllers implements Initializable{
     String currentNameOfBread;
     double currentPriceOfBread;
     int currentUnitsOfBread;
+    int selectedIndex = -1;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -64,8 +65,8 @@ public class InventoryMenuControllers implements Initializable{
             inventoryBreads.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pan>() {
                 @Override
                 public void changed(ObservableValue<? extends Pan> observableValue, Pan oldValue, Pan newValue) {
+                    selectedIndex = inventoryBreads.getSelectionModel().getSelectedIndex();
                     if (newValue != null){
-                        currentPan = newValue;
                         currentNameOfBread = newValue.getNameOfBread();
                         currentPriceOfBread = newValue.getPrice();
                         currentUnitsOfBread = newValue.getUnits();
@@ -90,12 +91,48 @@ public class InventoryMenuControllers implements Initializable{
             e.printStackTrace();
         }
     }
-    public void addItemButton(ActionEvent event){
-        System.out.println("Agregando Item");
+    public void changePriceBread(ActionEvent event ) throws IOException {
+        if ( selectedIndex != -1 ){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("modifyPriceInventory.fxml"));
+            root = loader.load();
+            Scene scene = new Scene(root);
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            Stage newWindow = new Stage();
+            newWindow.setScene( scene );
+            newWindow.initModality(Modality.APPLICATION_MODAL);
+            newWindow.initOwner(stage);
+            newWindow.showAndWait();
+        }
     }
-    public void changePriceBread(ActionEvent event ){
-        //System.out.println( "Test"+currentPan.getNameOfBread() );
+    public void addUnits(ActionEvent event) throws IOException {
+        if ( selectedIndex != -1 ){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("addUnitsInventory.fxml"));
+            root = loader.load();
+            Scene scene = new Scene(root);
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            Stage newWindow = new Stage();
+            newWindow.setScene( scene );
+            newWindow.initModality(Modality.APPLICATION_MODAL);
+            newWindow.initOwner(stage);
+            newWindow.showAndWait();
+        }
     }
-    public void testButton( ActionEvent event ){
+    public void addBread(ActionEvent event) throws IOException {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("addBreadInventory.fxml"));
+            root = loader.load();
+            Scene scene = new Scene(root);
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            Stage newWindow = new Stage();
+            newWindow.setScene( scene );
+            newWindow.initModality(Modality.APPLICATION_MODAL);
+            newWindow.initOwner(stage);
+            newWindow.showAndWait();
+    }
+    public void deleteBread(ActionEvent event ){
+        selectedIndex = inventoryBreads.getSelectionModel().getSelectedIndex();
+        if ( selectedIndex != -1 ){
+            inventarioPan.getBreads().remove( selectedIndex );
+            inventoryBreads.getItems().remove( selectedIndex );
+        }
     }
 }
