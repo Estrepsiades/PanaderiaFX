@@ -1,5 +1,6 @@
 package com.app.panfx;
 
+import com.app.panfx.Clases.InventarioPan;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

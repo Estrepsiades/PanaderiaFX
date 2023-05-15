@@ -1,5 +1,6 @@
 package com.app.panfx;
 
+import com.app.panfx.Clases.InventarioPan;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ScenesController {
-
+    private InventarioPan inventarioPan;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -23,7 +24,7 @@ public class ScenesController {
         stage.setScene( scene );
         stage.show();
     }
-    public void switchToInventoryMain( ActionEvent event ) throws Exception{
+    public void switchToInventoryMain( ActionEvent event) throws Exception{
         try {
             root = FXMLLoader.load(getClass().getResource("inventoryMenu.fxml"));
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -36,6 +37,11 @@ public class ScenesController {
             e.printStackTrace();
         }
 
+    }
+    public void testButton( ActionEvent event ){
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        inventarioPan = (InventarioPan) stage.getUserData();
+        inventarioPan.shownBreads();
     }
 
 }

@@ -42,11 +42,15 @@
       </MenuBar>
       <Button layoutX="506.0" layoutY="381.0" mnemonicParsing="false" onAction="#addItemButton" text="Agregar Nuevo Pan" />
       <Button layoutX="638.0" layoutY="381.0" mnemonicParsing="false" text="Eliminar Pan" />
-      <ListView layoutX="148.0" layoutY="61.0" prefHeight="359.0" prefWidth="359.0" />
-      <Label layoutX="574.0" layoutY="81.0" text="Tipo de pan" />
-      <Label layoutX="533.0" layoutY="120.0" text="Precio" />
+      <ListView fx:id="inventoryBreads" layoutX="148.0" layoutY="61.0" prefHeight="359.0" prefWidth="359.0" />
+      <Label layoutX="578.0" layoutY="53.0" text="Tipo de pan" />
+      <Label layoutX="527.0" layoutY="120.0" text="Precio" />
       <Label layoutX="654.0" layoutY="120.0" text="Unidades" />
-      <Button layoutX="507.0" layoutY="185.0" mnemonicParsing="false" text="Modificar Precio" />
+      <Button layoutX="507.0" layoutY="185.0" mnemonicParsing="false" onAction="#changePriceBread" text="Modificar Precio" />
       <Button layoutX="610.0" layoutY="185.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="Agregar Unidades" />
+      <Button layoutX="524.0" layoutY="256.0" mnemonicParsing="false" onAction="#testButton" text="Test" />
+      <Label fx:id="nameOfBread" layoutX="596.0" layoutY="79.0" />
+      <Label fx:id="priceOfBread" layoutX="529.0" layoutY="141.0" />
+      <Label fx:id="unitsOfBread" layoutX="665.0" layoutY="141.0" />
    </children>
 </AnchorPane>

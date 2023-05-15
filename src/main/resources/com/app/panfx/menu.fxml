@@ -39,5 +39,6 @@
             <Tooltip text="Empty Tooltip" />
          </tooltip>
       </Separator>
+      <Button layoutX="414.0" layoutY="222.0" mnemonicParsing="false" onAction="#testButton" text="Test" />
    </children>
 </AnchorPane>
