@@ -5,11 +5,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.panfx.AddUnitsInventoryController">
    <children>
-      <Button layoutX="71.0" layoutY="77.0" mnemonicParsing="false" text="Agregar" />
+      <Button layoutX="71.0" layoutY="77.0" mnemonicParsing="false" onAction="#addUnitsButton" text="Agregar" />
       <Label layoutX="7.0" layoutY="14.0" text="Cuantas Unidades quieres agregar?" />
-      <TextField layoutX="26.0" layoutY="43.0" />
+      <TextField fx:id="unitsTextField" layoutX="26.0" layoutY="43.0" />
    </children>
 </AnchorPane>

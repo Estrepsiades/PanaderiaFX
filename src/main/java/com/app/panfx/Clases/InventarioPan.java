@@ -11,20 +11,19 @@ public class InventarioPan {
     public InventarioPan(){
         this.breads = FXCollections.observableArrayList();
     }
-
     public ObservableList<Pan> getBreads() {
         return breads;
     }
     public void addBread( Pan pan ){
         this.breads.add( pan );
     }
-    public void deleteBread( Pan pan ){
-        System.out.println("Tiene que borrar algo");
-    }
-    public ListView<Pan> createListBreadView(){
-        ListView<Pan> listBreadView = new ListView<>();
-        listBreadView.setItems( breads );
-        return listBreadView;
+    public Pan getPanByName(String breadToSearch) {
+        for (Pan pan : getBreads()) {
+            if (breadToSearch.equals(pan.getNameOfBread())) {
+                return pan;
+            }
+        }
+        return null;
     }
     public void shownBreads(){
         int index = 0;

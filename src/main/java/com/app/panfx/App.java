@@ -3,6 +3,8 @@ package com.app.panfx;
 
 import com.app.panfx.Clases.InventarioPan;
 import com.app.panfx.Clases.Pan;
+import com.app.panfx.Clases.ShoppingCart;
+import com.app.panfx.Clases.UserDataContainer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,10 +21,11 @@ public class App extends Application {
         FXMLLoader root = new FXMLLoader(App.class.getResource("menu.fxml"));
         Scene scene = new Scene(root.load(), 720, 420);
         InventarioPan inventarioPan = new InventarioPan();
+        ShoppingCart shoppingCart = new ShoppingCart();
         inventarioPan.addBread(new Pan("Bolillo", 2.5, 50));
         inventarioPan.addBread(new Pan("Dona", 5, 40));
-        stage.setUserData( inventarioPan );
-        inventarioPan.shownBreads();
+        UserDataContainer userDataContainer = new UserDataContainer( inventarioPan, shoppingCart );
+        stage.setUserData( userDataContainer );
         Image icon = new Image(getClass().getResourceAsStream("/images/bread.png"));
         String css = this.getClass().getResource("/css/app.css").toExternalForm();
         scene.getStylesheets().add( css );

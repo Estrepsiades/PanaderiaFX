@@ -1,6 +1,7 @@
 package com.app.panfx;
 
 import com.app.panfx.Clases.InventarioPan;
+import com.app.panfx.Clases.UserDataContainer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ScenesController {
+    private UserDataContainer userDataContainer;
     private InventarioPan inventarioPan;
     private Stage stage;
     private Scene scene;
@@ -40,7 +42,8 @@ public class ScenesController {
     }
     public void testButton( ActionEvent event ){
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        inventarioPan = (InventarioPan) stage.getUserData();
+        userDataContainer = (UserDataContainer) stage.getUserData();
+        inventarioPan = userDataContainer.getInventarioPan();
         inventarioPan.shownBreads();
     }
 

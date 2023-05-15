@@ -1,7 +1,7 @@
 package com.app.panfx;
-
 import com.app.panfx.Clases.InventarioPan;
 import com.app.panfx.Clases.Pan;
+import com.app.panfx.Clases.UserDataContainer;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,16 +19,15 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class InventoryMenuControllers implements Initializable{
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private UserDataContainer userDataContainer;
     private InventarioPan inventarioPan;
     @FXML
     private ListView<Pan> inventoryBreads;
@@ -47,7 +46,8 @@ public class InventoryMenuControllers implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() ->{
             stage = (Stage) inventoryBreads.getScene().getWindow();
-            inventarioPan = (InventarioPan) stage.getUserData();
+            userDataContainer = (UserDataContainer) stage.getUserData();
+            inventarioPan = userDataContainer.getInventarioPan();
             ObservableList<Pan> breads = FXCollections.observableArrayList();
             breads.addAll( inventarioPan.getBreads() );
             inventoryBreads.setItems( breads );
@@ -94,39 +94,54 @@ public class InventoryMenuControllers implements Initializable{
     public void changePriceBread(ActionEvent event ) throws IOException {
         if ( selectedIndex != -1 ){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("modifyPriceInventory.fxml"));
-            root = loader.load();
-            Scene scene = new Scene(root);
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            Stage newWindow = new Stage();
-            newWindow.setScene( scene );
-            newWindow.initModality(Modality.APPLICATION_MODAL);
-            newWindow.initOwner(stage);
-            newWindow.showAndWait();
+            Parent root = loader.load();
+            ModifyPriceInventoryController modifyPriceInventoryController = loader.getController();
+            modifyPriceInventoryController.setParentController( this );
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
         }
+    }
+    public void changePriceBreadAction( double newPrice ){
+        inventarioPan.getBreads().get( selectedIndex ).setPrice( newPrice );
+        ObservableList<Pan> breads = FXCollections.observableArrayList();
+        breads.addAll( inventarioPan.getBreads() );
+        inventoryBreads.setItems( breads );
     }
     public void addUnits(ActionEvent event) throws IOException {
         if ( selectedIndex != -1 ){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("addUnitsInventory.fxml"));
-            root = loader.load();
-            Scene scene = new Scene(root);
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            Stage newWindow = new Stage();
-            newWindow.setScene( scene );
-            newWindow.initModality(Modality.APPLICATION_MODAL);
-            newWindow.initOwner(stage);
-            newWindow.showAndWait();
+            Parent root = loader.load();
+            AddUnitsInventoryController addUnitsInventoryController = loader.getController();
+            addUnitsInventoryController.setParentController( this );
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
         }
     }
+    public void addUnitsAction( int unitsToAdd ){
+        inventarioPan.getBreads().get( selectedIndex ).setUnits( inventarioPan.getBreads().get( selectedIndex ).getUnits() + unitsToAdd );
+        ObservableList<Pan> breads = FXCollections.observableArrayList();
+        breads.addAll( inventarioPan.getBreads() );
+        inventoryBreads.setItems( breads );
+    }
     public void addBread(ActionEvent event) throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("addBreadInventory.fxml"));
-            root = loader.load();
-            Scene scene = new Scene(root);
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            Stage newWindow = new Stage();
-            newWindow.setScene( scene );
-            newWindow.initModality(Modality.APPLICATION_MODAL);
-            newWindow.initOwner(stage);
-            newWindow.showAndWait();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("addBreadInventory.fxml"));
+        Parent root = loader.load();
+        AddBreadInventoryController addBreadInventoryController = loader.getController();
+        addBreadInventoryController.setParentController(this);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    }
+    public void addBreadAction( String nameOfBread, double price, int units ){
+        inventarioPan.addBread(new Pan(nameOfBread, price, units ));
+        ObservableList<Pan> breads = FXCollections.observableArrayList();
+        breads.addAll( inventarioPan.getBreads() );
+        inventoryBreads.setItems( breads );
     }
     public void deleteBread(ActionEvent event ){
         selectedIndex = inventoryBreads.getSelectionModel().getSelectedIndex();

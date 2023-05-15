@@ -5,15 +5,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="192.0" prefWidth="181.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="192.0" prefWidth="181.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.panfx.AddBreadInventoryController">
    <children>
       <Label layoutX="47.0" layoutY="14.0" text="Nombre del pan" />
-      <TextField layoutX="13.0" layoutY="31.0" />
+      <TextField fx:id="nameTextField" layoutX="13.0" layoutY="31.0" />
       <Label layoutX="71.0" layoutY="56.0" text="Precio" />
-      <TextField layoutX="13.0" layoutY="73.0" />
-      <TextField layoutX="13.0" layoutY="119.0" />
+      <TextField fx:id="priceTextField" layoutX="13.0" layoutY="73.0" />
+      <TextField fx:id="unitsTextField" layoutX="13.0" layoutY="119.0" />
       <Label layoutX="63.0" layoutY="102.0" text="Unidades" />
-      <Button layoutX="54.0" layoutY="157.0" mnemonicParsing="false" text="Nuevo Pan" />
+      <Button layoutX="54.0" layoutY="157.0" mnemonicParsing="false" onAction="#newBreadButton" text="Nuevo Pan" />
    </children>
 </AnchorPane>

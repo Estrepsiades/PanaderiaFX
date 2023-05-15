@@ -11,7 +11,7 @@
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.panfx.SellMenuControllers">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.panfx.ShoppingCartControllers">
    <children>
       <MenuBar prefHeight="20.0" prefWidth="720.0">
          <menus>
@@ -40,17 +40,22 @@
             <Tooltip text="Empty Tooltip" />
          </tooltip>
       </Separator>
-      <Label layoutX="140.0" layoutY="29.0" prefHeight="17.0" prefWidth="589.0" text="Venta" />
-      <ListView fx:id="inventoryBreads" layoutX="140.0" layoutY="62.0" prefHeight="358.0" prefWidth="366.0" />
+      <Label layoutX="140.0" layoutY="29.0" prefHeight="17.0" prefWidth="589.0" text="Carrito" />
+      <ListView fx:id="shoppingCartBreads" layoutX="140.0" layoutY="62.0" prefHeight="358.0" prefWidth="366.0" />
       <Label layoutX="577.0" layoutY="62.0" text="Tipo De Pan" />
       <Label layoutX="529.0" layoutY="110.0" text="Precio" />
-      <Label layoutX="593.0" layoutY="110.0" text="Unidades Disponibles" />
-      <Button layoutX="662.0" layoutY="185.0" mnemonicParsing="false" onAction="#addToShoppingCart" prefHeight="25.0" prefWidth="55.0" text="Agregar Al Carrito" />
-      <Spinner fx:id="unitsSpinner" layoutX="511.0" layoutY="185.0" />
-      <Label layoutX="529.0" layoutY="168.0" text="Cuantas Unidades" />
-      <Button layoutX="511.0" layoutY="381.0" mnemonicParsing="false" onAction="#switchToShoppingCart" text="Carrito" />
-      <Label fx:id="priceOfBread" layoutX="532.0" layoutY="131.0" />
-      <Label fx:id="unitsOfBread" layoutX="628.0" layoutY="131.0" />
-      <Label fx:id="nameOfBread" layoutX="596.0" layoutY="79.0" />
+      <Label layoutX="586.0" layoutY="110.0" text="Unidades Seleccionadas" />
+      <Button layoutX="662.0" layoutY="185.0" mnemonicParsing="false" onAction="#deleteAUnitFromShoppingCar" prefHeight="25.0" prefWidth="55.0" text="Eliminar" />
+      <Spinner fx:id="unitsSpinnerCart" layoutX="511.0" layoutY="185.0" />
+      <Label layoutX="516.0" layoutY="168.0" text="Cuantas unidades quieres eliminar?" />
+      <Button layoutX="642.0" layoutY="381.0" mnemonicParsing="false" onAction="#backToVenta" text="Regresar" />
+      <Label fx:id="priceOfBreadCart" layoutX="532.0" layoutY="131.0" />
+      <Label fx:id="unitsOfBreadCart" layoutX="628.0" layoutY="131.0" />
+      <Label fx:id="nameOfBreadCart" layoutX="596.0" layoutY="79.0" />
+      <Button layoutX="511.0" layoutY="381.0" mnemonicParsing="false" onAction="#cleanShoppingCar" text="Vaciar Carrito" />
+      <Label layoutX="518.0" layoutY="217.0" text="Total" />
+      <Label fx:id="totalPrice" layoutX="518.0" layoutY="241.0" text="Label" />
+      <Button layoutX="648.0" layoutY="349.0" mnemonicParsing="false" onAction="#sellBtn" text="Vender" />
+      <Button layoutX="511.0" layoutY="349.0" mnemonicParsing="false" onAction="#deleteBreadFromShoppingCar" text="Borrar Pan Del Carro" />
    </children>
 </AnchorPane>
