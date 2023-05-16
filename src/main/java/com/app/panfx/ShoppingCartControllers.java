@@ -1,5 +1,4 @@
 package com.app.panfx;
-
 import com.app.panfx.Clases.*;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -20,7 +19,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 public class ShoppingCartControllers implements Initializable {
     private Stage stage;
     private Scene scene;
@@ -86,24 +84,25 @@ public class ShoppingCartControllers implements Initializable {
                     }
                 }
             });
-
         });
     }
     public void deleteAUnitFromShoppingCar( ActionEvent event){
         if ( selectedIndex != -1 ){
             int unitsToDelete = unitsSpinnerCart.getValue();
-            if ( unitsToDelete == shoppingCart.getBreadsSC().get(selectedIndex).getSelectedUnits() ){
-                if ( shoppingCart.getBreadsSC().get(selectedIndex).getNameOfBread().equals(inventarioPan.getBreads().get(shoppingCart.getBreadsSC().get(selectedIndex).getIndexFromInventory()).getNameOfBread())){
-                    inventarioPan.getBreads().get( shoppingCart.getBreadsSC().get(selectedIndex).getIndexFromInventory()).addUnits( unitsToDelete );
-                    shoppingCart.getBreadsSC().get(selectedIndex).removeSelectedUnits( unitsToDelete );
+            PanSC selectedPanSc = shoppingCart.getBreadsSC().get(selectedIndex);
+            Pan selectedPanInventory = inventarioPan.getBreads().get(selectedPanSc.getIndexFromInventory());
+            if ( unitsToDelete == selectedPanSc.getSelectedUnits() ){
+                if ( selectedPanSc.getNameOfBread().equals(selectedPanInventory.getNameOfBread())){
+                    selectedPanInventory.addUnits( unitsToDelete );
+                    selectedPanSc.removeSelectedUnits( unitsToDelete );
                     shoppingCart.getBreadsSC().remove( selectedIndex );
                     shoppingCartBreads.getItems().remove( selectedIndex );
                     currentTotalPrice = shoppingCart.getTotalPrices();
                     totalPrice.setText(String.valueOf(currentTotalPrice));
                 } else {
-                    String nameOfBread = shoppingCart.getBreadsSC().get(selectedIndex).getNameOfBread();
-                    double price = shoppingCart.getBreadsSC().get(selectedIndex).getPrice();
-                    int units = shoppingCart.getBreadsSC().get(selectedIndex).getSelectedUnits();
+                    String nameOfBread = selectedPanSc.getNameOfBread();
+                    double price = selectedPanSc.getPrice();
+                    int units = selectedPanSc.getSelectedUnits();
                     inventarioPan.addBread(new Pan(nameOfBread, price, units));
                     shoppingCart.getBreadsSC().remove( selectedIndex );
                     shoppingCartBreads.getItems().remove( selectedIndex );
@@ -111,8 +110,8 @@ public class ShoppingCartControllers implements Initializable {
                     totalPrice.setText(String.valueOf(currentTotalPrice));
                 }
             }else {
-                inventarioPan.getBreads().get( shoppingCart.getBreadsSC().get(selectedIndex).getIndexFromInventory()).addUnits( unitsToDelete );
-                shoppingCart.getBreadsSC().get(selectedIndex).removeSelectedUnits( unitsToDelete );
+                selectedPanInventory.addUnits( unitsToDelete );
+                selectedPanSc.removeSelectedUnits( unitsToDelete );
                 currentTotalPrice = shoppingCart.getTotalPrices();
                 totalPrice.setText(String.valueOf(currentTotalPrice));
                 ObservableList<PanSC> breadsSC = FXCollections.observableArrayList();
@@ -125,7 +124,6 @@ public class ShoppingCartControllers implements Initializable {
         selectedIndex = shoppingCartBreads.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1) {
             String nameOfBread = shoppingCart.getBreadsSC().get(selectedIndex).getNameOfBread();
-
             int indexFromInventory = -1;
             for (int i = 0; i < inventarioPan.getBreads().size(); i++) {
                 if (inventarioPan.getBreads().get(i).getNameOfBread().equals(nameOfBread)) {
@@ -133,7 +131,6 @@ public class ShoppingCartControllers implements Initializable {
                     break;
                 }
             }
-
             if (indexFromInventory != -1) {
                 inventarioPan.getBreads().get(indexFromInventory).addUnits(shoppingCart.getBreadsSC().get(selectedIndex).getSelectedUnits());
             } else {
@@ -141,22 +138,17 @@ public class ShoppingCartControllers implements Initializable {
                 int units = shoppingCart.getBreadsSC().get(selectedIndex).getSelectedUnits();
                 inventarioPan.addBread(new Pan(nameOfBread, price, units));
             }
-
             shoppingCart.getBreadsSC().remove(selectedIndex);
             shoppingCartBreads.getItems().remove(selectedIndex);
-
             currentTotalPrice = shoppingCart.getTotalPrices();
             totalPrice.setText(String.valueOf(currentTotalPrice));
         }
     }
-
-
     public void cleanShoppingCar(ActionEvent event) {
         for (PanSC panSC : shoppingCart.getBreadsSC()) {
             String nameOfBread = panSC.getNameOfBread();
             double price = panSC.getPrice();
             int units = panSC.getSelectedUnits();
-
             Pan existingPan = inventarioPan.getPanByName(nameOfBread);
             if (existingPan != null) {
                 existingPan.addUnits(units);
@@ -164,13 +156,11 @@ public class ShoppingCartControllers implements Initializable {
                 inventarioPan.addBread(new Pan(nameOfBread, price, units));
             }
         }
-
         shoppingCart.getBreadsSC().clear();
         shoppingCartBreads.getItems().clear();
         currentTotalPrice = shoppingCart.getTotalPrices();
         totalPrice.setText(String.valueOf(currentTotalPrice));
     }
-
     public void sellBtn( ActionEvent event ) throws IOException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ticketShoppingCart.fxml"));
@@ -185,7 +175,6 @@ public class ShoppingCartControllers implements Initializable {
         }catch ( IOException e ){
             e.printStackTrace();
         }
-
     }
     public void sellBtnAction(){
         shoppingCart.getBreadsSC().clear();

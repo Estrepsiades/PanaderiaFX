@@ -1,5 +1,4 @@
 package com.app.panfx;
-
 import com.app.panfx.Clases.InventarioPan;
 import com.app.panfx.Clases.Pan;
 import javafx.application.Platform;
@@ -13,7 +12,6 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 public class AddBreadInventoryController{
     private InventoryMenuControllers parentController;
     private InventarioPan inventarioPan;
@@ -30,7 +28,11 @@ public class AddBreadInventoryController{
         double price = Double.parseDouble(priceTextField.getText());
         int units = Integer.parseInt(unitsTextField.getText());
         if (parentController != null) {
-            parentController.addBreadAction( nameOfBread, price, units );
+            if ( nameOfBread.isBlank() ){
+                System.out.println("Ingresa un caracter");
+            }else {
+                parentController.addBreadAction( nameOfBread, price, units );
+            }
         } else {
             System.out.println("El controlador de InventoryMenuControllers es nulo");
         }

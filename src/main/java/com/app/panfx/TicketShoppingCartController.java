@@ -53,7 +53,7 @@ public class TicketShoppingCartController implements Initializable {
         if ( parentController != null ){
             parentController.sellBtnAction();
         }else {
-            System.out.println("Error en ticket");
+            System.out.println("Error en TicketShoppingCart");
         }
         stage.close();
     }

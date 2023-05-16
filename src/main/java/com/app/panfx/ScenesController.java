@@ -1,5 +1,4 @@
 package com.app.panfx;
-
 import com.app.panfx.Clases.InventarioPan;
 import com.app.panfx.Clases.UserDataContainer;
 import javafx.event.ActionEvent;
@@ -10,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 public class ScenesController {
     private UserDataContainer userDataContainer;
     private InventarioPan inventarioPan;
@@ -38,13 +36,5 @@ public class ScenesController {
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
-    public void testButton( ActionEvent event ){
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        userDataContainer = (UserDataContainer) stage.getUserData();
-        inventarioPan = userDataContainer.getInventarioPan();
-        inventarioPan.shownBreads();
-    }
-
 }

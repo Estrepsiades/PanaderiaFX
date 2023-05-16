@@ -1,6 +1,5 @@
 //Importamos nuestros paquetes iniciales y JavaFx
 package com.app.panfx;
-
 import com.app.panfx.Clases.InventarioPan;
 import com.app.panfx.Clases.Pan;
 import com.app.panfx.Clases.ShoppingCart;
@@ -12,7 +11,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
 public class App extends Application {
     @Override
     //Metodo start, encargado de renderizar nuestra aplicacion en pantalla
@@ -35,7 +33,6 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
     public static void main(String[] args) {
         launch();
     }

@@ -22,7 +22,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 public class InventoryMenuControllers implements Initializable{
     private Stage stage;
     private Scene scene;
@@ -41,7 +40,6 @@ public class InventoryMenuControllers implements Initializable{
     double currentPriceOfBread;
     int currentUnitsOfBread;
     int selectedIndex = -1;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() ->{

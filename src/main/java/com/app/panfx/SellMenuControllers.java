@@ -1,5 +1,4 @@
 package com.app.panfx;
-
 import com.app.panfx.Clases.*;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -18,7 +17,6 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 public class SellMenuControllers implements Initializable {
     private Stage stage;
     private Scene scene;
@@ -40,7 +38,6 @@ public class SellMenuControllers implements Initializable {
     double currentPriceOfBread;
     int currentUnitsOfBread;
     int selectedIndex = -1;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() ->{
@@ -83,16 +80,17 @@ public class SellMenuControllers implements Initializable {
         });
     }
     public void addToShoppingCart( ActionEvent event ){
+        Pan selectedBread = inventarioPan.getBreads().get(selectedIndex);
         if ( selectedIndex != -1 ){
-            if ( unitsSpinner.getValue() == inventarioPan.getBreads().get(selectedIndex).getUnits() ){
-                String nameOfBread = inventarioPan.getBreads().get(selectedIndex).getNameOfBread();
-                double price = inventarioPan.getBreads().get(selectedIndex).getPrice();
+            if ( unitsSpinner.getValue() == selectedBread.getUnits() ){
+                String nameOfBread = selectedBread.getNameOfBread();
+                double price = selectedBread.getPrice();
                 int unitsSelected = unitsSpinner.getValue();
                 shoppingCart.addBread(new PanSC( nameOfBread, price, unitsSelected, selectedIndex ));
                 inventarioPan.getBreads().remove( selectedIndex );
                 inventoryBreads.getItems().remove( selectedIndex );
             }else {
-                String nameOfBread = inventarioPan.getBreads().get(selectedIndex).getNameOfBread();
+                String nameOfBread = selectedBread.getNameOfBread();
                 int index = -1;
                 for (int i = 0; i < shoppingCart.getBreadsSC().size(); i++) {
                     PanSC panSC = shoppingCart.getBreadsSC().get(i);
@@ -103,10 +101,10 @@ public class SellMenuControllers implements Initializable {
                 }
                 if ( index != -1 ){
                     shoppingCart.getBreadsSC().get(index).addSelectedUnits( unitsSpinner.getValue() );
-                    inventarioPan.getBreads().get(selectedIndex).deleteUnits( unitsSpinner.getValue() );
+                    selectedBread.deleteUnits( unitsSpinner.getValue() );
                 }else {
-                    inventarioPan.getBreads().get(selectedIndex).deleteUnits( unitsSpinner.getValue() );
-                    double price = inventarioPan.getBreads().get(selectedIndex).getPrice();
+                    selectedBread.deleteUnits( unitsSpinner.getValue() );
+                    double price = selectedBread.getPrice();
                     int unitsSelected = unitsSpinner.getValue();
                     shoppingCart.addBread(new PanSC( nameOfBread, price, unitsSelected, selectedIndex ));
                 }
@@ -125,7 +123,6 @@ public class SellMenuControllers implements Initializable {
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
     public void switchToShoppingCart( ActionEvent event ) throws Exception {
         try {

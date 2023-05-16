@@ -1,14 +1,11 @@
 package com.app.panfx.Clases;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 public class ShoppingCart {
     private ObservableList<PanSC> breadsSC;
     public ShoppingCart(){
         this.breadsSC = FXCollections.observableArrayList();
     }
-
     public ObservableList<PanSC> getBreadsSC() {
         return breadsSC;
     }

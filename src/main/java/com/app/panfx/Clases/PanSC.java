@@ -1,5 +1,4 @@
 package com.app.panfx.Clases;
-
 public class PanSC {
     private String nameOfBread;
     private double price;
