@@ -5,8 +5,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.panfx.ScenesController">
@@ -30,15 +28,11 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Separator layoutX="127.0" layoutY="19.0" orientation="VERTICAL" prefHeight="405.0" prefWidth="5.0" />
-      <Label layoutX="133.0" layoutY="21.0" prefHeight="17.0" prefWidth="589.0" text="Menu Principal" />
-      <Button layoutY="26.0" mnemonicParsing="false" onAction="#switchToInventoryMain" text="Inventario" />
-      <Button layoutX="70.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToSellMain" text="Vender" />
-      <Separator layoutY="118.0" prefHeight="4.0" prefWidth="131.0">
-         <tooltip>
-            <Tooltip text="Empty Tooltip" />
-         </tooltip>
-      </Separator>
-      <Button layoutX="414.0" layoutY="222.0" mnemonicParsing="false" onAction="#testButton" text="Test" />
+      <Button layoutX="185.0" layoutY="182.0" mnemonicParsing="false" onAction="#switchToInventoryMain" prefHeight="107.0" prefWidth="149.0" text="Inventario" />
+      <Button layoutX="387.0" layoutY="182.0" mnemonicParsing="false" onAction="#switchToSellMain" prefHeight="107.0" prefWidth="149.0" text="Vender" />
+      <Label layoutX="334.0" layoutY="30.0" text="Panaderia" />
+      <Label layoutX="245.0" layoutY="51.0" text="Universidad Nacional Autonoma De Mexico" />
+      <Label layoutX="347.0" layoutY="85.0" text="2205" />
+      <Label layoutX="299.0" layoutY="68.0" text="Programacion Aplicada" />
    </children>
 </AnchorPane>

@@ -26,6 +26,11 @@ public class PanSC {
     public void addSelectedUnits( int unitsToAdd ){
         this.selectedUnits = this.selectedUnits + unitsToAdd;
     }
+    public double getBreadTotalPrice(){
+        double totalPrice;
+        totalPrice = this.getPrice() * this.getSelectedUnits();
+        return totalPrice;
+    }
     public void removeSelectedUnits( int unitsToRemove ){
         this.selectedUnits = this.selectedUnits - unitsToRemove;
     }

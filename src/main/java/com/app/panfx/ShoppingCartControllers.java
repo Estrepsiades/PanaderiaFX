@@ -14,8 +14,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -169,8 +171,25 @@ public class ShoppingCartControllers implements Initializable {
         totalPrice.setText(String.valueOf(currentTotalPrice));
     }
 
-    public void sellBtn( ActionEvent event ){
+    public void sellBtn( ActionEvent event ) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ticketShoppingCart.fxml"));
+            Parent root = loader.load();
+            TicketShoppingCartController ticketShoppingCartController = loader.getController();
+            ticketShoppingCartController.setParentController( this );
+            Stage stage = new Stage();
+            stage.setUserData( shoppingCart );
+            stage.setScene(new Scene( root ));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        }catch ( IOException e ){
+            e.printStackTrace();
+        }
 
+    }
+    public void sellBtnAction(){
+        shoppingCart.getBreadsSC().clear();
+        shoppingCartBreads.getItems().clear();
     }
     public void switchToInventory( ActionEvent event ) throws Exception{
         try {
