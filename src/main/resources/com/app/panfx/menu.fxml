@@ -28,7 +28,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button layoutX="185.0" layoutY="182.0" mnemonicParsing="false" onAction="#switchToInventoryMain" prefHeight="107.0" prefWidth="149.0" text="Inventario" />
+      <Button fx:id="btnInventoryMain" layoutX="185.0" layoutY="182.0" mnemonicParsing="false" onAction="#switchToInventoryMain" prefHeight="107.0" prefWidth="149.0" text="Inventario" />
       <Button layoutX="387.0" layoutY="182.0" mnemonicParsing="false" onAction="#switchToSellMain" prefHeight="107.0" prefWidth="149.0" text="Vender" />
       <Label layoutX="334.0" layoutY="30.0" text="Panaderia" />
       <Label layoutX="245.0" layoutY="51.0" text="Universidad Nacional Autonoma De Mexico" />

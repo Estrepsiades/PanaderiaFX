@@ -12,6 +12,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 public class App extends Application {
+    //Necesario tener JavaJDK 20 y JavaFx20, para configurar JavaFX en NetBeans revisar el siguiente tutorial: "https://www.youtube.com/watch?v=6E4IkTuvUCI&t=331s"
+    //Universidad Nacional Autonoma De Mexico
+    //Facultad De Estudios Superiores Aragon
+    //Ingenieria Electrica Electronica
+    //Programacion Aplicada
+    //Hernandez Reyna Samuel Alejandro
+    //Ahuatzi Calderon Ezequiel Santiago
+    //Santiago Ramirez Moraled
+    //Jose Antonio Carranza Trejo
+    //Carol Alondra Perez Gomez
+    //Kevin Manuel Silva Ramirez
     @Override
     //Metodo start, encargado de renderizar nuestra aplicacion en pantalla
     public void start(Stage stage) throws IOException {

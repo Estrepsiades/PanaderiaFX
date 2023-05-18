@@ -1,3 +1,33 @@
 .root{
     -fx-background-color: rgb(225, 227, 179);
 }
+#btnInventoryMain{
+-fx-background-color: transparent;
+    -fx-text-fill: hsl(277, 55%, 40%);
+    -fx-font-family: "Raleway";
+    -fx-font-weight: 700;
+    -fx-font-size: 1.125rem;
+    -fx-letter-spacing: 0.08em;
+    -fx-text-transform: uppercase;
+    -fx-text-alignment: center;
+    -fx-padding: 0.85em;
+    -fx-max-width: 100%;
+    -fx-width: 12em;
+    -fx-border-color: hsl(277, 55%, 40%);
+    -fx-border-width: 5px;
+    -fx-border-radius: 2em;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(rgba(0, 0, 0, 0.25), 0, 8, 15, 0);
+    -fx-transition-duration: 0.25s;
+}
+#btnInventoryMain:hover{
+    -fx-text-fill: hsl(307, 72%, 86%);
+    -fx-border-color: hsl(307, 72%, 86%);
+    -fx-background-color: hsla(277, 55%, 40%, 0.7);
+}
+#btnInventoryMain:pressed{
+    -fx-text-fill: hsl(307, 72%, 86%);
+    -fx-border-color: hsl(307, 72%, 86%);
+    -fx-background-color: hsla(277, 55%, 40%, 0.7);
+    -fx-effect: none;
+}
